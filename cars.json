@@ -15,6 +15,20 @@
       "max_km": 100000
     },
     {
+      "make": "Toyota",
+      "model": "Camry",
+      "min_year": 2017,
+      "max_year": 2023,
+      "color": "White",
+      "engine": "2.5L I4",
+      "min_price": 20000,
+      "max_price": 30000,
+      "fuel_type": "Gasoline",
+      "body_style": "Sedan",
+      "min_km": 0,
+      "max_km": 100000
+    },
+    {
       "make": "Honda",
       "model": "Civic",
       "min_year": 2016,
