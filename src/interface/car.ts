@@ -1,14 +1,14 @@
 export interface Car {
   make: string;
   model: string;
-  min_year: number;
-  max_year: number;
+  min_year: string | number;
+  max_year: string | number;
   color: string;
   engine: string;
-  min_price: number;
-  max_price: number;
+  min_price: string | number;
+  max_price: string | number;
   fuel_type: string;
   body_style: string;
-  min_km: number;
-  max_km: number;
+  min_km: string | number;
+  max_km: string | number;
 }

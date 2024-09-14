@@ -17,6 +17,7 @@ export const SelectBox: React.FC<SelectBoxProps> = ({
   uniqueValues = [],
   disabled = false,
 }) => {
+
   return (
    
       <select
