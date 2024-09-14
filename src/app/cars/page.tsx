@@ -21,16 +21,16 @@ const Inventory: React.FC = () => {
     min_km: '',
     max_km: '',
   });
+  const [filteredCars, setFilteredCars] = useState<Car[]>(carData || []) ;
+  const [keywordSearch,setKeywordSearch] =useState<Car[]>([]);
+
   //@ts-ignore
   const uniqueValues = (key: keyof Car, filteredCar :Car[]  = carData) => {
     return Array.from(new Set(filteredCar?.map(car => car[key])));
   }
 
   const filteredCarsByMake=carData?.filter(car=>car.make===filters.make);
-
-  const [filteredCars, setFilteredCars] = useState<Car[]>(carData || []) ;
-  const [keywordSearch,setKeywordSearch] =useState<Car[]>([]);
-
+  
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFilters(prevFilters => ({
@@ -62,6 +62,7 @@ const Inventory: React.FC = () => {
       setFilteredCars([]);
     }
   };
+
   const handleKeywordSearch = (e:React.ChangeEvent<HTMLInputElement>) => {
       
       const findCars = carData?.filter(car => {
@@ -105,9 +106,10 @@ const Inventory: React.FC = () => {
       max_km: '',
     })
    }
+
   const selectOptions = getSelectOptions(filters);
 
-  if(isLoadingCarData) return <div>Loading ...</div>
+if(isLoadingCarData) return <div className='h-screen flex justify-center items-center'>Loading ...</div>
 
   return (
     <div className="p-4">
@@ -119,7 +121,7 @@ const Inventory: React.FC = () => {
             name={name}
             value={filters[name as keyof Car] } 
             handleChange={handleChange}
-            uniqueValues={name==='make'? uniqueValues('make') :uniqueValues(name as keyof Car, filteredCarsByMake)}
+            uniqueValues={(name ==='make') || (name ==='color') || (name ==='max_year')  || (name ==='min_year') || (name ==='max_price') || (name ==='min_price') || (name ==='max_km') || (name ==='min_km')? uniqueValues(name) :uniqueValues(name as keyof Car, filteredCarsByMake)}
             disabled={disabled}
           />
         ))}
