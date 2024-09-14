@@ -1,7 +1,7 @@
 import { Car } from "@/interface/car";
 
 export const getSelectOptions = (filters: Car) => [
-  { label: 'Any Make', name: 'make', disabled: false },
+  { label: 'Any Make', name: 'make', disabled: false ,filteredBox :" "},
   { label: 'Any Model', name: 'model', disabled: !filters.make }, 
   { label: 'Any Color', name: 'color', disabled: false },
   { label: 'Any Fuel Type', name: 'fuel_type', disabled: false },

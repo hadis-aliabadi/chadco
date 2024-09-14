@@ -23,7 +23,7 @@ const Inventory: React.FC = () => {
   });
   const [filteredCars, setFilteredCars] = useState<Car[]>(carData || []) ;
   const [keywordSearch,setKeywordSearch] =useState<Car[]>([]);
-
+  const [filterByMake,setFilterByMake] =useState<boolean>(false)
   //@ts-ignore
   const uniqueValues = (key: keyof Car, filteredCar :Car[]  = carData) => {
     return Array.from(new Set(filteredCar?.map(car => car[key])));
@@ -32,6 +32,7 @@ const Inventory: React.FC = () => {
   const filteredCarsByMake=carData?.filter(car=>car.make===filters.make);
   
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    if(e.target.name==='make') setFilterByMake(true);
     const { name, value } = e.target;
     setFilters(prevFilters => ({
       ...prevFilters,
@@ -109,6 +110,13 @@ const Inventory: React.FC = () => {
 
   const selectOptions = getSelectOptions(filters);
 
+  const handleUniqueValues = (name) =>{
+    if(name ==='make')
+     {
+      return 
+    }
+  }
+
 if(isLoadingCarData) return <div className='h-screen flex justify-center items-center'>Loading ...</div>
 
   return (
@@ -121,10 +129,11 @@ if(isLoadingCarData) return <div className='h-screen flex justify-center items-c
             name={name}
             value={filters[name as keyof Car] } 
             handleChange={handleChange}
-            uniqueValues={(name ==='make') || (name ==='color') || (name ==='max_year')  || (name ==='min_year') || (name ==='max_price') || (name ==='min_price') || (name ==='max_km') || (name ==='min_km')? uniqueValues(name) :uniqueValues(name as keyof Car, filteredCarsByMake)}
+            uniqueValues={(filterByMake) && ((name==='model') || (name==='engine') || (name==='body_style')) ? uniqueValues(name as keyof Car, filteredCarsByMake) : uniqueValues(name as keyof Car) }
             disabled={disabled}
           />
         ))}
+        {/* || (name ==='color') || (name ==='max_year')  || (name ==='min_year') || (name ==='max_price') || (name ==='min_price') || (name ==='max_km') || (name ==='min_km') */}
         <div className='border relative'>
           <input 
             onChange={(e)=>handleKeywordSearch(e)} 
