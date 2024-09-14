@@ -110,12 +110,6 @@ const Inventory: React.FC = () => {
 
   const selectOptions = getSelectOptions(filters);
 
-  const handleUniqueValues = (name) =>{
-    if(name ==='make')
-     {
-      return 
-    }
-  }
 
 if(isLoadingCarData) return <div className='h-screen flex justify-center items-center'>Loading ...</div>
 
@@ -133,7 +127,7 @@ if(isLoadingCarData) return <div className='h-screen flex justify-center items-c
             disabled={disabled}
           />
         ))}
-        {/* || (name ==='color') || (name ==='max_year')  || (name ==='min_year') || (name ==='max_price') || (name ==='min_price') || (name ==='max_km') || (name ==='min_km') */}
+        
         <div className='border relative'>
           <input 
             onChange={(e)=>handleKeywordSearch(e)} 
