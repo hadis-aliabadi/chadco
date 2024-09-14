@@ -131,9 +131,9 @@ const Inventory: React.FC = () => {
           />
           {
             keywordSearch?.length > 0 &&
-            <div className='absolute bg-white w-full border'>
+            <div className='absolute  w-full border-t bg-slate-400'>
               {keywordSearch.map((car, index) => (
-              <div key={index} className="border-b p-4 mb-4">
+              <div key={index} className="border-t p-4 mb-4 ">
                 <p><strong>Make:</strong> {car.make}</p>
                 <p><strong>Model:</strong> {car.model}</p>
                 <p><strong>Year:</strong> {car.min_year} - {car.max_year}</p>
@@ -161,7 +161,7 @@ const Inventory: React.FC = () => {
         {filteredCars?.length > 0 ? (
           <div>
             {filteredCars.map((car, index) => (
-              <div key={index} className="border p-4 mb-4">
+              <div key={index} className="border p-4 mb-4 ">
                 <p><strong>Make:</strong> {car.make}</p>
                 <p><strong>Model:</strong> {car.model}</p>
                 <p><strong>Year:</strong> {car.min_year} - {car.max_year}</p>
